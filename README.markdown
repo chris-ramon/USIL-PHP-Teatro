@@ -2,8 +2,9 @@
 
 <p>Trabajo para el curso de PHP</p>
 
-<ul>Colaboradores:</ul>
+<ul><strong>Colaboradores:</strong>
 <li>Arenas Albarracin Eduardo</li>
 <li>Lucano Callenova Gabriel</li>
-<li>Ramón Rodriguez Christian</li>
 <li>Rodriguez Ramos Paola</li>
+<li>Ramón Rodriguez Christian</li>
+</ul>
