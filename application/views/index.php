@@ -5,7 +5,7 @@
     <title>Obras de Teatro App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/app.css">
 		<link href='http://fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Imprima' rel='stylesheet' type='text/css'>
@@ -22,17 +22,16 @@
 		</div>
 		<header class="row">
 			<div class="span8">
-				<h1>Obras de Teatro</h1>
+				<h1>Obras Teatrales</h1>
 				<h2>Suscríbete y participa ! comentando y dando puntos a las mejores obras.</h2>
 			</div>
-
 			<aside class="span4">
 				<ul>
 					<li>
 						<button class="btn btn-primary">
 							<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png">
 							Regístrate con Facebook
-						</button>
+						</button>		
 					</li>
 					<li>
 						<button class="btn btn-info">
@@ -186,9 +185,6 @@
 
 	          </div>
 	        </li>	        
-
-
-        	        
       	</ul>
 			</div>
 		</section>
