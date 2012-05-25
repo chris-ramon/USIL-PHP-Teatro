@@ -1,0 +1,35 @@
+header h1{
+margin-bottom: 15px;
+}
+label {
+cursor: pointer;	
+}
+#dashboard-content {
+clear:right;	
+}
+#dashboard-content .span12 {
+margin-top:-40px;	
+}
+#add-obra-btn {
+margin-top:-27px;	
+}
+#sidebar {
+margin-top: 50px;	
+}
+.actors-wrapper {
+margin-top:18px;	
+}
+.actors-wrapper .well {
+padding-top:10px;	
+padding-bottom:5px;	
+}
+.separator{
+margin-top:10px;
+margin-bottom:30px;
+}
+@media (max-width: 767px) {
+	#sidebar {
+	margin-top: -25px;
+	margin-bottom: 30px;
+	}
+}

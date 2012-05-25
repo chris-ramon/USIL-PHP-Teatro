@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "home";
 $route['404_override'] = '';
+$route['panel/nueva-obra-teatral'] = 'panel/nueva_obra_teatral';
 
 
 /* End of file routes.php */
