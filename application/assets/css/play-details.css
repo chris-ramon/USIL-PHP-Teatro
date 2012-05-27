@@ -1,0 +1,11 @@
+h2 {
+margin-top: -14px;	
+}
+.separator {
+height: 0px;	
+}
+@media (max-width: 768px){
+	h2 {
+		margin-top:5px;
+	}
+}
