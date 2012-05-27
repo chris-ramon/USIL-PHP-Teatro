@@ -4,14 +4,17 @@ margin-bottom: 15px;
 label {
 cursor: pointer;	
 }
+#add-obra-btn {
+margin-top:-27px;	
+}
 #dashboard-content {
 clear:right;	
 }
 #dashboard-content .span12 {
 margin-top:-40px;	
 }
-#add-obra-btn {
-margin-top:-27px;	
+#new-time-btn {
+margin-bottom:10px;	
 }
 #sidebar {
 margin-top: 50px;	
