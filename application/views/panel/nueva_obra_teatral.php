@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/bootstrap-responsive.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/app.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/panel.css">
-    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/jquery-ui-timepicker-addon.css">   
 	<link href='http://fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'>
 </head>
 <body>
@@ -91,24 +89,16 @@
 					<input id="sala" type="text" name="sala" class="span4"
 					value="<?php echo set_value('sala'); ?>">
 
-					<div class="row-fluid">
-						<div class="span3">
-							<button id="new-time-btn" class="btn pull-right">
-								<i class="icon-plus"></i>
-								Nuevo Horario
-							</button>
-							<label for="horarios">Horarios</label>
-							<input id="horarios" type="text" name="horarios" class="span7 horario" placeholder="horario ..."
-							value="<?php echo set_value(''); ?>">
-						</div>
-					</div>
+					<label for="horarios">Horarios</label>
+					<input id="horarios" type="text" name="horarios" class="span7 horario"
+					value="<?php echo set_value(''); ?>">
 
 					<label for="temporada">Temporada</label>
 					<input id="temporada" type="text" name="temporada" class="span4"
 					value="<?php echo set_value('temporada'); ?>">
 
 					<label for="precio">Precio</label>
-					<input id="precio" type="text" name="precio" class="span2"
+					<input id="precio" type="number" name="precio" class="span2"
 					value="<?php echo set_value('precio'); ?>">
 
 					<input id="submit-obra" type="submit" value="Crear Obra" class="btn btn-primary">
@@ -118,15 +108,6 @@
 			</div>				
 		</header>		
 	</div>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-	<script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js'></script>
-	<script src='<?php echo base_url() ?>/application/assets/js/jquery-ui-timepicker-addon.js'></script>
-	<script>
-		$(function() {
-			$(".horario").datetimepicker();
-			console.log($(".horario"));
-		});
-	</script>
 </body>
 </html>
 
