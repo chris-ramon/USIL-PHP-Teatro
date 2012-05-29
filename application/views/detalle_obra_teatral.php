@@ -29,23 +29,24 @@
 		</header>
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div class="span2">
-					<button id="rating" class="pull-left btn btn-success">140 puntos</button>
+				<div id="main-rating-wrapper" class="span2">
+					<button id="main-rating" class="pull-left btn btn-success">140 puntos</button>
 				</div>
 				<div class="span10">
 					<div class="row-fluid">
-						<h2 class="span4">La Señorita Julia</h2>
-						<aside id="play-ratings" class="span6">
-							<span>140 Puntos</span>
-							<span>50 Likes</span>
-							<span>20 Comentarios</span>
+						<aside id="play-ratings" class="span10">
+							<span class="span2">140 Puntos</span>
+							<span class="span2">50 Likes</span>
+							<span class="span2">20 Comentarios</span>
 						</aside>		
 					</div>
 
 					<div class="row-fluid">
-						<a href="#" class="span2">Me gustó</a>
-						<a href="#" class="span2">No me gustó</a>
-						<a href="#" class="span2">Comentar</a>						
+						<aside id="participate-options" class="span10">
+							<a href="#" class="span2">Me gustó</a>
+							<a href="#" class="span2">No me gustó</a>
+							<a href="#disqus_thread" class="span2">Comentar</a>						
+						</aside>
 					</div>
 
 					<div class="row-fluid">
@@ -58,13 +59,13 @@
 						<p class="span5"><strong>Funciones: </strong>De Jueves a Martes 8 p.m y Domingos 7 p.m</p>					
 					</div>
 
-					<div class="row-fluid">
-						<div class="span10">
-							<img src="<?php echo base_url(); ?>upload_files/img/lasenorita.png">
-						</div>
+					<div id="poster" class="row-fluid">
+							<ul class="thumbnails">
+								<li class="span10">
+									<a href="" class="thumbnail"><img src="<?php echo base_url(); ?>upload_files/img/lasenorita.png"></a>
+								</li>
+							</ul>
 					</div>
-
-					<div class="row-fluid"><div class="separator span10"></div></div>
 
 					<div class="row-fluid"><div class="span10"><h3>Sinópsis</h3></div></div>
 
@@ -86,17 +87,28 @@
 						</div>
 					</div>
 
-					<div class="row-fluid"><div class="separator span10"></div></div>
+					<div class="row-fluid">
+						<div class="span10">
+							<div class="separator"></div>
+						</div>
+					</div>
 					
 				</div>
 			</div>
+		<section id="comments" class="row">
+			<div id="disqus_thread" class="span8 offset2"></div>
+				<script type="text/javascript">
+					var disqus_developer = 1;
+				    var disqus_shortname = 'chris-pe';
+				    (function() {
+				        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+				        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+				        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+				    })();
+				</script>
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		</section>		
 		</div>
 	</div>
-	<script src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-	<script>
-	$(window).resize(function() {
-		console.log($(window).width());
-	});
-	</script>
 </body>
 </html>

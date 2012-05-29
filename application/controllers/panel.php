@@ -19,8 +19,4 @@ class Panel extends CI_Controller
 		$this->load->view('panel/nueva_obra_teatral.php');
 	}
 
-	function detalle_obra_teatral()
-	{
-		$this->load->view('panel/detalle_obra_teatral.php');
-	}
 }

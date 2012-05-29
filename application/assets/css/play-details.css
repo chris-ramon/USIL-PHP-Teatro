@@ -1,11 +1,51 @@
-h2 {
-margin-top: -14px;	
+header {
+text-align: center;
+margin-bottom:35px;	
+}
+#poster {
+margin-top: 10px;	
+}
+#play-ratings, h3 {
+font-weight:bold;	
+color: #6A343B;	
+}
+#participate-options {
+margin: 15px 0px;	
+}
+#participate-options a {
+margin-bottom:15px;	
+}
+#participate-options a:nth-of-type(1) {
+padding-top:5px;
+background: url("../img/like.png") no-repeat 63px 0px;
+}
+#participate-options a:nth-of-type(2) {
+padding-top:5px;
+background: url("../img/dislike.png") no-repeat 83px 0px;
+}
+#participate-options a:nth-of-type(3) {
+padding-top:5px;
+background: url("../img/comment.png") no-repeat 65px 0px;
+}
+.thumbnail {
+background: transparent;	
+}
+.thumbnail:hover{
+background: #f5f5f5;
 }
 .separator {
-height: 0px;	
+margin:20px 0px;
 }
-@media (max-width: 768px){
-	h2 {
-		margin-top:5px;
+@media (max-width: 767px) {
+	#main-rating-wrapper {
+		margin-bottom:20px;
+	}
+}
+@media (max-width: 1200px) {
+	#participate-options a:nth-of-type(1), #participate-options a:nth-of-type(3) {
+		width: 95px;
+	}	
+	#participate-options a:nth-of-type(2) {
+		width: 115px;
 	}
 }

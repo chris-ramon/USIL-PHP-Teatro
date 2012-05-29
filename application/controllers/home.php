@@ -21,6 +21,11 @@ class Home extends CI_Controller {
 	{
 		$this->load->view('index');
 	}
+
+	function detalle_obra_teatral($id)
+	{
+		$this->load->view('detalle_obra_teatral.php');
+	}
 }
 
 /* End of file welcome.php */

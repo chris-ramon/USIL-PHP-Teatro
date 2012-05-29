@@ -4,6 +4,10 @@
 body {
 background: url("../img/bg.png");
 }
+p {
+font-size: 14px;
+line-height: 1.5em;
+}
 h1 {
 font-family: 'Lovers Quarrel', cursive;
 font-size:70px;
