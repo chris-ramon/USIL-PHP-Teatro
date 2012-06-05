@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-06-2012 a las 16:56:13
+-- Tiempo de generación: 05-06-2012 a las 17:20:37
 -- Versión del servidor: 5.5.8
 -- Versión de PHP: 5.3.5
 
@@ -72,8 +72,9 @@ CREATE TABLE IF NOT EXISTS `obras` (
   `director` varchar(120) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `reseña` varchar(1024) NOT NULL,
-  `puntos` int(11) NOT NULL,
-  `likes` int(11) NOT NULL,
+  `afiche` varchar(200) NOT NULL,
+  `puntos` int(11) NOT NULL DEFAULT '0',
+  `likes` int(11) NOT NULL DEFAULT '0',
   `lugar` varchar(150) NOT NULL,
   `fechaHora` datetime NOT NULL,
   `temporada` varchar(70) NOT NULL,
