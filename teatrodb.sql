@@ -2,10 +2,10 @@
 -- version 3.3.9
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 01, 2012 at 03:28 
--- Server version: 5.5.8
--- PHP Version: 5.3.5
+-- Servidor: localhost
+-- Tiempo de generación: 05-06-2012 a las 16:56:13
+-- Versión del servidor: 5.5.8
+-- Versión de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -16,38 +16,32 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `teatro`
+-- Base de datos: `teatro`
 --
-CREATE DATABASE `teatro` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `teatro`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `actores`
+-- Estructura de tabla para la tabla `actores`
 --
 
 CREATE TABLE IF NOT EXISTS `actores` (
   `actorId` int(11) NOT NULL AUTO_INCREMENT,
   `obraId` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `genero` varchar(1) NOT NULL,
-  `foto` varchar(300) NOT NULL,
-  `descripcion` varchar(1024) NOT NULL,
   PRIMARY KEY (`actorId`),
   KEY `obraId` (`obraId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `actores`
+-- Volcar la base de datos para la tabla `actores`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comentarios`
+-- Estructura de tabla para la tabla `comentarios`
 --
 
 CREATE TABLE IF NOT EXISTS `comentarios` (
@@ -62,35 +56,40 @@ CREATE TABLE IF NOT EXISTS `comentarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `comentarios`
+-- Volcar la base de datos para la tabla `comentarios`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `obras`
+-- Estructura de tabla para la tabla `obras`
 --
 
 CREATE TABLE IF NOT EXISTS `obras` (
   `obraId` int(11) NOT NULL AUTO_INCREMENT,
+  `autor` varchar(60) NOT NULL,
+  `director` varchar(120) NOT NULL,
   `nombre` varchar(100) NOT NULL,
+  `reseña` varchar(1024) NOT NULL,
   `puntos` int(11) NOT NULL,
   `likes` int(11) NOT NULL,
   `lugar` varchar(150) NOT NULL,
   `fechaHora` datetime NOT NULL,
+  `temporada` varchar(70) NOT NULL,
+  `precio` double NOT NULL,
   PRIMARY KEY (`obraId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `obras`
+-- Volcar la base de datos para la tabla `obras`
 --
 
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `usuarios`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -103,22 +102,22 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
--- Dumping data for table `usuarios`
+-- Volcar la base de datos para la tabla `usuarios`
 --
 
 
 --
--- Constraints for dumped tables
+-- Filtros para las tablas descargadas (dump)
 --
 
 --
--- Constraints for table `actores`
+-- Filtros para la tabla `actores`
 --
 ALTER TABLE `actores`
   ADD CONSTRAINT `actores_ibfk_1` FOREIGN KEY (`obraId`) REFERENCES `obras` (`obraId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `comentarios`
+-- Filtros para la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
   ADD CONSTRAINT `comentarios_ibfk_1` FOREIGN KEY (`userId`) REFERENCES `usuarios` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE,
