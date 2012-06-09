@@ -27,33 +27,43 @@
 			</div>
 			<aside class="span4">
 				<ul>
-					<li>
-						<button class="btn btn-primary">
-							<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png">
-							Regístrate con Facebook
-						</button>		
-					</li>
-					<li>
-						<button class="btn btn-info">
-							<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
-							Regístrate con Twitter
-						</button>
-					</li>
-					<li>
-					<div id="login-wrapper" data-status="inactive">
-						<form>
-							<a id="close-login-wrapper" href="#"></a>
-							<input type="text" placeholder="Email ... ">
-							<input type="password" placeholder="Password ... ">
-							<input class="btn" type="submit" value="Ingresar">
-							<input class="btn" type="reset">
-						</form>
-					</div>
-					<button id="login-btn" class="btn">
-						<img src="<?php echo base_url(); ?>application/assets/img/icon-arrowup.png">
-						Usa tu cuenta
-					</button>
-					</li>
+					<?php if($fb_data['fb_id']){ ?>
+	                    <li>
+	                    	<p><a href="https://graph.facebook.com/<?php echo $fb_data['fb_id']; ?>/picture"><img src="https://graph.facebook.com/<?php echo $fb_data['fb_id']; ?>/picture" alt="" class="pic" /></a>
+	                                      Bienvenido, <?php echo $fb_data['name']; ?></p>
+	                        <a href="<?php echo $fb_data['logoutUrl']; ?>" class="btn btn-primary" >
+	                            <img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png"> Cerrar Sesión
+	                        </a>
+	                    </li>
+                    <?php } else {?>
+						<li>
+                                              <a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
+                                                  <img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png">
+                                                  Regístrate con Facebook
+                                              </a>                                            	
+						</li>
+						<li>
+							<button class="btn btn-info">
+								<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
+								Regístrate con Twitter
+							</button>
+						</li>
+						<li>
+                                            <div id="login-wrapper" data-status="inactive">
+                                                <form method="POST" action="<?php echo base_url(); ?>index.php/home/login">
+                                                    <a id="close-login-wrapper" href="#"></a>
+                                                    <input type="text" placeholder="Email ... " name="email"/>
+                                                    <input type="password" placeholder="Password ... " name="password"/>
+                                                    <input class="btn" type="submit" value="Ingresar"/>
+                                                    <input class="btn" type="reset"/>
+                                                </form>
+                                            </div>
+                                            <button id="login-btn" class="btn">
+                                                    <img src="<?php echo base_url(); ?>application/assets/img/icon-arrowup.png">
+                                                    Usa tu cuenta
+                                            </button>
+						</li>
+					<?php } ?>	
 				</ul>
 			</aside>
 		</header>
