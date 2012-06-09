@@ -94,13 +94,16 @@ CREATE TABLE IF NOT EXISTS `obras` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
-  `password` varchar(40) NOT NULL,
+  `userId` int(50) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(100) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `password` varchar(75) NOT NULL,
   `nombre` varchar(300) NOT NULL,
   `foto` varchar(300) NOT NULL,
-  `genero` varchar(1) NOT NULL,
+  `logged` varchar(2) NOT NULL,
   PRIMARY KEY (`userId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Volcar la base de datos para la tabla `usuarios`
