@@ -26,17 +26,21 @@
 				<div class="separator"></div>
 			</div>
 		</header>
+		<section>
+			
+		</section>
 		<div class="row">
 			<div class="span4 offset4">
-                            <form id="login-form" class="well" method="POST" action="<?php echo base_url(); ?>index.php/home/login">
-				<label>Email</label>
-				<input type="text" name="email" placeholder="Ingrese su email ... "/>
-				<label>Password</label>
-				<input type="password" name="password" placeholder="Ingrese su password ... "/>
-				<label></label>
-				<input type="submit" value="Ingresar" class="btn">
-				<input type="reset" class="btn">
-			</form>				
+                <form id="login-form" class="well" method="POST" action="<?php echo base_url(); ?>index.php/home/login">
+					<label>Email</label>
+					<input type="text" name="email" placeholder="Ingrese su email ... "/>
+					<label>Password</label>
+					<input type="password" name="password" placeholder="Ingrese su contraseña ... "/>
+					<label></label>
+					<input type="submit" value="Ingresar" class="btn">
+					<a href="<?php echo base_url(); ?>index.php"> Regresar</a>
+				</form>		
+				<p>Si olvidó su contraseña de Facebook, <a href="https://www.facebook.com/recover.php">haga clic aquí.</a></p>
 			</div>
 		</div>
 	</div>

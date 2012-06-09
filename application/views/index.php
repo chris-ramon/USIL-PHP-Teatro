@@ -53,7 +53,7 @@
                                                 <form method="POST" action="<?php echo base_url(); ?>index.php/home/login">
                                                     <a id="close-login-wrapper" href="#"></a>
                                                     <input type="text" placeholder="Email ... " name="email"/>
-                                                    <input type="password" placeholder="Password ... " name="password"/>
+                                                    <input type="password" placeholder="Contraseña ... " name="password"/>
                                                     <input class="btn" type="submit" value="Ingresar"/>
                                                     <input class="btn" type="reset"/>
                                                 </form>
