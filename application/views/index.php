@@ -27,7 +27,7 @@
 			</div>
 			<aside class="span4">
 				<ul>
-					<?php if($fb_data['fb_id']){ ?>
+					<?php if($this->session->userdata('user_data')=='facebook'){ ?>
 	                    <li>
 	                    	<p><a href="https://graph.facebook.com/<?php echo $fb_data['fb_id']; ?>/picture"><img src="https://graph.facebook.com/<?php echo $fb_data['fb_id']; ?>/picture" alt="" class="pic" /></a>
 	                                      Bienvenido, <?php echo $fb_data['name']; ?></p>
@@ -36,17 +36,27 @@
 	                        </a>
 	                    </li>
                     <?php } else {?>
+                    	<?php if($this->session->userdata('user_data')=='twitter'){ ?>
+                    		<li>
+		                    	<p><a href="<?php echo $tw_data['user']->profile_image_url;?>"><img src="<?php echo $tw_data['user']->profile_image_url;?>" alt="" class="pic" /></a>
+		                                      Bienvenido, <?php echo $tw_data['user']->name; ?></p>
+		                        <a href="<?php echo base_url(); ?>index.php/home/logoutTw" class="btn btn-info">
+									<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
+									Cerrar Sesión
+								</a>
+		                    </li>
+                    	<?php } else {?>
+                    	
 						<li>
-                                              <a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
-                                                  <img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png">
-                                                  Regístrate con Facebook
-                                              </a>                                            	
+								<a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
+									<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png"> Regístrate con Facebook
+								</a>                                            	
 						</li>
 						<li>
-							<button class="btn btn-info">
-								<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
-								Regístrate con Twitter
-							</button>
+								<a href="<?php echo base_url(); ?>index.php/home/loginTw" class="btn btn-info">
+									<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
+									Regístrate con Twitter
+								</a>
 						</li>
 						<li>
                                             <div id="login-wrapper" data-status="inactive">
@@ -63,6 +73,7 @@
                                                     Usa tu cuenta
                                             </button>
 						</li>
+						<?php } ?>
 					<?php } ?>	
 				</ul>
 			</aside>
