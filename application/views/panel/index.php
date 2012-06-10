@@ -14,6 +14,7 @@
 	<div class="container-fluid">
 		<div id="top-colors">
 				<div></div><!--
+               
 			--><div></div><!--
 			--><div></div><!--
 			--><div></div><!--
@@ -38,7 +39,8 @@
 	      <div id="dashboard-content" class="row-fluid">
 	      	<div class="span12">
 	      		<h2>Todas las Obras</h2>
-	      		<button id="add-obra-btn" class="btn pull-right btn-primary">Agregar Obra Teatral</button>
+	      		<?php echo anchor("/panel/nueva-obra-teatral", 'Agregar Obra teatral',array("id"=>"add-obra-btn","class"=>"btn pull-right btn-primary"));?>
+                        
 	      		<div class="separator separator-panel"></div>
 				    <ul class="thumbnails">
 			        <li class="span3">
