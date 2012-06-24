@@ -65,13 +65,29 @@ class Usuario extends CI_Model{
         }
         return false;
     }
-    
-    public function login($email,$password) {
-        $user=$this->getUserByEmail($email);
-        if($user!=null){
-            if($user->getPassword()==$password)
+
+    public function getUserByUsername($username){
+        $usuarios = $this->getAllUsers();
+        foreach($usuarios as $user){
+            if($user->getUsername() == $username)
                 return $user;
-            else{
+        }
+        return false;
+    }
+    
+    public function login($useremail,$password) {
+        $userFb=$this->getUserByEmail($useremail);
+        $userTw=$this->getUserByUsername($useremail);
+        if($userFb!=null){
+            if($userFb->getPassword()==$password){
+                return $userFb;
+            }else{
+                return false;
+            }
+        }elseif($userTw!=null){
+            if($userTw->getPassword()==$password){
+                return $userTw;
+            }else{
                 return false;
             }
         }else{
@@ -104,6 +120,19 @@ class Usuario extends CI_Model{
            'logged' => 'Tw'
         );
         $this->db->insert('usuarios', $data);
+    }
+    public function updateUser($id,$userId,$username,$email,$password,$nombre,$foto,$logged){
+        $data = array(
+           'user_id' => $userId,
+           'username' => $username,
+           'email' => $email,
+           'password' => $password,
+           'nombre' => $nombre,
+           'foto' => $foto,
+           'logged' => $logged
+        );
+        $this->db->where('userId', $id);
+        $this->db->update('usuarios', $data); 
     }
     
 }

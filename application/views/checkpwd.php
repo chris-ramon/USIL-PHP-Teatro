@@ -30,15 +30,18 @@
 			
 		</section>
 		<div class="row">
+			<p></p>
 			<div class="span4 offset4">
-                <form id="login-form" class="well" method="POST" action="<?php echo base_url(); ?>index.php/home/login">
-					<label>Email de Facebook | Username de Twitter</label>
-					<input type="text" name="email" placeholder="Ingrese su email ... "/>
+                <form id="login-form" class="well" method="POST" action="<?php echo base_url(); ?>index.php/home/confirm_pwd">
+                	<p>Usuario: <small style="font-size:15px;"><?php echo $username;?><?php echo $email;?></small></p>
+                	<input type="hidden" name="username" value="<?php echo $username;?>"/>
+                	<input type="hidden" name="email" value="<?php echo $email;?>"/>
 					<label>Contraseña</label>
-					<input type="password" name="password" placeholder="Ingrese su contraseña ... "/>
-					<label></label>
-					<input type="submit" value="Ingresar" class="btn">
-					<a href="<?php echo base_url(); ?>index.php"> Regresar</a>
+					<input type="password" name="password" placeholder="Ingrese una contraseña ... "/>
+					<label>Confirmar contraseña</label>
+					<input type="password" name="password2" placeholder="Ingrese nuevamente la contraseña ... "/>
+					<p style="color:#DF0023;"><?php echo $msg;?></p>
+					<input type="submit" value="Aceptar" class="btn"/>
 				</form>		
 			</div>
 		</div>

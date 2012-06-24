@@ -15,6 +15,7 @@ class Home extends CI_Controller {
     }
  
     function index(){
+        echo $this->session->userdata('user_data');
         //Facebook Login
             $user = $this->facebook->getUser();
 
@@ -34,45 +35,63 @@ class Home extends CI_Controller {
             } else {
                 $fb_data['loginUrl'] = $this->facebook->getLoginUrl(array(
                                     'scope' => 'email,user_birthday,publish_stream,offline_access', // app permissions
-                                    'redirect_uri' => 'http://192.168.1.100/USIL-PHP-Teatro/' // URL where you want to redirect your users after a successful login
+                                    'redirect_uri' => 'http://192.168.1.98/USIL-PHP-Teatro/' // URL where you want to redirect your users after a successful login
                                 ));
             }
             if ($fb_data['user']['name']!=null){//verificar si está logeado en facebook
-                if(!isset($fb_data['user']['username']))
-                    $username = "usuarioFB";
-                else
-                    $username=$fb_data['user']['username'];
-                $this->loginFb($fb_data['user']['id'],$username,$fb_data['user']['email'],"passwordgenerado",$fb_data['user']['name'],"https://graph.facebook.com/".$fb_data['user']['id']."/picture");
+                if( !isset($fb_data['user']['username']) ) { $username = "usuarioFB";} else { $username=$fb_data['user']['username'];}
                 $this->session->set_userdata('fb_data',$fb_data);
                 $this->session->set_userdata('user_data','facebook');
                 $this->session->unset_userdata('tw_data');
+                $this->loginFb($fb_data['user']['id'],$username,$fb_data['user']['email'], NULL,$fb_data['user']['name'],"https://graph.facebook.com/".$fb_data['user']['id']."/picture");
             }
-
             $data['fb_data']=$fb_data;
             $data['tw_data']=$this->session->userdata('tw_data');
-        $this->load->view('index',$data);
-
+        if($this->session->userdata('user_data')=='facebook'){
+                if($this->Usuario->getUserByUser_Id($fb_data['user']['id'])->getPassword()==null){
+                    $data['username']="";
+                    $data['email']=$fb_data['user']['email'];
+                    $data['msg']="";
+                    $this->load->view('checkpwd',$data);
+                }else{
+                    $this->load->view('index',$data);
+                }
+        }else{
+            $this->load->view('index',$data);
+        }
     }
 
-    /*
+    
     function login() {
-        $email = $this->input->post('email');
+        $useremail = $this->input->post('email');
         $pass = $this->input->post('password');
-        $result = $this->Usuario->login($email,$pass);
+        $result = $this->Usuario->login($useremail,md5($pass));
         if($result!=null){
-            $fb_data['fb_id']=$result->getUser_id();
-            $fb_data['name']=$result->getNombre();
-            $fb_data['logoutUrl'] = $this->facebook->getLogoutUrl();
+            if($result->getLogged()=='Fb'){
+                $fb_data['fb_id']=$result->getUser_id();
+                $fb_data['name']=$result->getNombre();
+                $fb_data['logoutUrl'] = "http://localhost/USIL-PHP-Teatro/index.php/home/logoutFb";
 
-            $this->session->set_userdata('fb_data', $fb_data);
-            
-            $data['fb_data']=$fb_data;
-            $this->load->view('index',$data);
+                $this->session->set_userdata('fb_data', $fb_data);
+                $this->session->set_userdata('user_data','facebook');
+                
+                $data['fb_data']=$fb_data;
+                $this->load->view('index',$data);
+            }else{
+                $tw_data['user']->profile_image_url=$result->getFoto();
+                $tw_data['user']->name=$result->getNombre();
+
+                $this->session->set_userdata('tw_data', $tw_data);
+                $this->session->set_userdata('user_data','twitter');
+                
+                $data['tw_data']=$tw_data;
+                $this->load->view('index',$data);
+            }
         }else{
             $this->load->view('login');
         }
     }
-    */
+    
 
     function loginFb($user_id,$username,$email,$password,$nombre,$foto){
         if($this->Usuario->getUserByUser_Id($user_id)==null){
@@ -90,14 +109,25 @@ class Home extends CI_Controller {
 				$user = $this->twitter->call('get', 'account/verify_credentials');
 				$tw_data['user']=$user;
 				if($this->Usuario->getUserByUser_Id($tw_data['user']->id)==null){
-					$this->Usuario->insertUserTw($tw_data['user']->id,$tw_data['user']->screen_name,'email@email.com','passwordgenerado',$tw_data['user']->name,$tw_data['user']->profile_image_url);
+					$this->Usuario->insertUserTw($tw_data['user']->id,$tw_data['user']->screen_name,'email@email.com',NULL,$tw_data['user']->name,$tw_data['user']->profile_image_url);
 				}
 				$this->session->set_userdata('tw_data',$tw_data);
 				$this->session->set_userdata('user_data','twitter');
 				$this->session->unset_userdata('fb_data');
 			}
 			$data['tw_data']=$tw_data;
-        $this->load->view('index',$data);
+        if ($this->session->userdata('user_data')=='twitter') {
+                if($this->Usuario->getUserByUser_Id($tw_data['user']->id)->getPassword()==null){
+                    $data['username']=$tw_data['user']->screen_name;
+                    $data['email']="";
+                    $data['msg']="";
+                    $this->load->view('checkpwd',$data);
+                }else{
+                    $this->load->view('index',$data);
+                }
+        }else{
+            $this->load->view('index',$data);
+        }
     }
     function logoutFb(){
     	$this->session->sess_destroy();
@@ -111,6 +141,34 @@ class Home extends CI_Controller {
     	$this->session->unset_userdata('user_data');
         $this->twitter->logout();
         redirect('../index.php');
+    }
+
+    function confirm_pwd(){
+        $user=null;
+        if($this->input->post('username')!=null) {
+            $username= $this->input->post('username');
+            $user = $this->Usuario->getUserByUsername($username);
+        }
+        if($this->input->post('email')!=null) {
+            $email= $this->input->post('email');
+            $user = $this->Usuario->getUserByEmail($email);
+        }
+        $pass1= $this->input->post('password');
+        $pass2= $this->input->post('password2');
+        if (strlen($pass1)<6) {
+            $data['username']=$this->input->post('username');
+            $data['email']=$this->input->post('email');
+            $data['msg']="La contraseña debe ser mínimo de 6 caracteres.";
+            $this->load->view('checkpwd',$data);
+        }elseif($pass2!=$pass1){
+            $data['username']=$this->input->post('username');
+            $data['email']=$this->input->post('email');
+            $data['msg']="No coinciden las contraseñas ingresadas.";
+            $this->load->view('checkpwd',$data);
+        }else{
+            $this->Usuario->updateUser($user->getId(), $user->getUser_id(), $user->getUsername(), $user->getEmail(), md5($pass1), $user->getNombre(), $user->getFoto(), $user->getLogged() );
+            redirect('../index.php');
+        }
     }
     
     function detalle_obra_teatral($id)

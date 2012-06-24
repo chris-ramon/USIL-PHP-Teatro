@@ -46,33 +46,47 @@
 								</a>
 		                    </li>
                     	<?php } else {?>
-                    	
-						<li>
-								<a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
-									<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png"> Regístrate con Facebook
-								</a>                                            	
-						</li>
-						<li>
-								<a href="<?php echo base_url(); ?>index.php/home/loginTw" class="btn btn-info">
-									<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
-									Regístrate con Twitter
-								</a>
-						</li>
-						<li>
-                                            <div id="login-wrapper" data-status="inactive">
-                                                <form method="POST" action="<?php echo base_url(); ?>index.php/home/login">
-                                                    <a id="close-login-wrapper" href="#"></a>
-                                                    <input type="text" placeholder="Email ... " name="email"/>
-                                                    <input type="password" placeholder="Contraseña ... " name="password"/>
-                                                    <input class="btn" type="submit" value="Ingresar"/>
-                                                    <input class="btn" type="reset"/>
-                                                </form>
-                                            </div>
-                                            <button id="login-btn" class="btn">
-                                                    <img src="<?php echo base_url(); ?>application/assets/img/icon-arrowup.png">
-                                                    Usa tu cuenta
-                                            </button>
-						</li>
+	                    	<?php if($this->session->userdata('user_data')=='facebook'){ ?>
+								<li>
+									<a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
+										<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png"> Regístrate con Facebook
+									</a>                                            	
+								</li>
+							<?php }elseif($this->session->userdata('user_data')=='twitter'){ ?>
+								<li>
+									<a href="<?php echo base_url(); ?>index.php/home/loginTw" class="btn btn-info">
+										<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
+										Regístrate con Twitter
+									</a>
+								</li>
+							<?php }else{ ?>
+								<li>
+									<a href="<?php echo $fb_data['loginUrl']; ?>" class="btn btn-primary">
+										<img src="<?php echo base_url(); ?>application/assets/img/icon-fb.png"> Regístrate con Facebook
+									</a>                                            	
+								</li>
+								<li>
+									<a href="<?php echo base_url(); ?>index.php/home/loginTw" class="btn btn-info">
+										<img src="<?php echo base_url(); ?>application/assets/img/icon-tw.png">
+										Regístrate con Twitter
+									</a>
+								</li>
+							<?php }?>
+							<li>
+	                                            <div id="login-wrapper" data-status="inactive">
+	                                                <form method="POST" action="<?php echo base_url(); ?>index.php/home/login">
+	                                                    <a id="close-login-wrapper" href="#"></a>
+	                                                    <input type="text" placeholder="Email FB o usuario TW... " name="email"/>
+	                                                    <input type="password" placeholder="Contraseña ... " name="password"/>
+	                                                    <input class="btn" type="submit" value="Ingresar"/>
+	                                                    <input class="btn" type="reset"/>
+	                                                </form>
+	                                            </div>
+	                                            <button id="login-btn" class="btn">
+	                                                    <img src="<?php echo base_url(); ?>application/assets/img/icon-arrowup.png">
+	                                                    Usa tu cuenta
+	                                            </button>
+							</li>
 						<?php } ?>
 					<?php } ?>	
 				</ul>

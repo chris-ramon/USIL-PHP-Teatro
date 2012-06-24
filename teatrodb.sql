@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `user_id` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `email` varchar(200) NOT NULL,
-  `password` varchar(75) NOT NULL,
+  `token` varchar(150) NOT NULL,
   `nombre` varchar(300) NOT NULL,
   `foto` varchar(300) NOT NULL,
   `logged` varchar(2) NOT NULL,
