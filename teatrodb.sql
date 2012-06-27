@@ -72,7 +72,6 @@ CREATE TABLE IF NOT EXISTS `obras` (
   `director` varchar(120) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `reseña` varchar(1024) NOT NULL,
-  `afiche` varchar(200) NOT NULL,
   `puntos` int(11) NOT NULL DEFAULT '0',
   `likes` int(11) NOT NULL DEFAULT '0',
   `lugar` varchar(150) NOT NULL,
@@ -80,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `obras` (
   `temporada` varchar(70) NOT NULL,
   `precio` double NOT NULL,
   PRIMARY KEY (`obraId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;
 
 --
 -- Volcar la base de datos para la tabla `obras`
