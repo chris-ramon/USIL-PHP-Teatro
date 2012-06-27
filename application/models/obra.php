@@ -6,7 +6,6 @@ class Obra extends CI_Model {
     private $_director;
     private $_nombre;
     private $_reseña;
-    private $_afiche;
     private $_puntos;
     private $_likes;
     private $_lugar;
@@ -14,13 +13,12 @@ class Obra extends CI_Model {
     private $_temporada; 
     private $_precio;
 
-    public function __construct($_id, $_autor, $_director, $_nombre, $_reseña, $_afiche, $_puntos, $_likes, $_lugar, $_fechaHora, $_temporada, $_precio) {
+    public function __construct($_id="", $_autor="", $_director="", $_nombre="", $_reseña="", $_puntos="", $_likes="", $_lugar="", $_fechaHora="", $_temporada="", $_precio="") {
         $this->_id = $_id;
         $this->_autor = $_autor;
         $this->_director = $_director;
         $this->_nombre = $_nombre;
         $this->_reseña = $_reseña;
-        $this->_afiche = $_afiche;
         $this->_puntos = $_puntos;
         $this->_likes = $_likes;
         $this->_lugar = $_lugar;
@@ -84,12 +82,12 @@ class Obra extends CI_Model {
         $lista = $query->result();
         $listaObras = array();
         foreach($lista as $obra){
-            $id = $obra->id;
+            $id = $obra->obraId;
             $autor = $obra->autor;   
             $director = $obra->director;
             $nombre = $obra->nombre;
             $reseña = $obra->reseña;
-            $afiche = $obra->afiche;
+            
             $puntos = $obra->puntos;
             $likes = $obra->likes;
             $lugar = $obra->lugar;
@@ -97,19 +95,20 @@ class Obra extends CI_Model {
             $temporada = $obra->temporada;
             $precio = $obra->precio;
             
-            $listaObras[] = new Obra($id, $autor, $director, $nombre, $reseña, $afiche, $puntos, $likes, $lugar, $fechaHora, $temporada, $precio); 
+            $listaObras[] = new Obra($id, $autor, $director, $nombre, $reseña, $puntos, $likes, $lugar, $fechaHora, $temporada, $precio); 
         }
         return $listaObras;
     }
     
+   
+    
     public function crearObra(Obra $obra){
         $data=array(
-            'id'=>$obra->getId(),
+            'obraId'=>$obra->getId(),
             'autor'=>$obra->getAutor(),
             'director'=>$obra->getdirector(),
             'nombre'=>$obra->getNombre(),
             'reseña'=>$obra->getReseña(),
-            'afiche'=>$obra->getAfiche(),
             'puntos'=>$obra->getPuntos(),
             'likes'=>$obra->getLikes(),
             'lugar'=>$obra->getLugar(),
@@ -127,7 +126,6 @@ class Obra extends CI_Model {
             'director'=>$obra->getdirector(),
             'nombre'=>$obra->getNombre(),
             'reseña'=>$obra->getReseña(),
-            'afiche'=>$obra->getAfiche(),
             'puntos'=>$obra->getPuntos(),
             'likes'=>$obra->getLikes(),
             'lugar'=>$obra->getLugar(),
@@ -140,7 +138,7 @@ class Obra extends CI_Model {
     }
     
     public function eliminarObra($id){
-        $this->db->where('id',$id);
+        $this->db->where('obraiId',$id);
         $this->db->delete("obras");
     }
     
