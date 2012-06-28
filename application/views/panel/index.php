@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/app.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/panel.css">
 	<link href='http://fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'> 
-</head>
+    <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-ui-1.8.16.custom.min.js.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-ui-timepicker-addon.js"></script>
+    
+ </head>
 <body>
       
 
@@ -40,39 +44,34 @@
 	      <div id="dashboard-content" class="row-fluid">
 	      	<div class="span12">
 	      		<h2>Todas las Obras</h2>
-	      		<button id="add-obra-btn" class="btn pull-right btn-primary">Agregar Obra Teatral</button>
-	      		<div class="separator separator-panel"></div>
+                        <?php echo form_open('panel/nueva_obra_teatral'); ?> 
+                        <input id="add-obra-btn" class="btn pull-right btn-primary" value="Agregar Obra Teatral" type="submit"/>
+	      		 <?php echo form_close(); ?>
+                        <div class="separator separator-panel"></div>
 				    <ul class="thumbnails">
-			        <li class="span3">
+			         <?php foreach($obras as $o){ ?>
+                                   <li class="span3">
 			          <div class="thumbnail">
-			            <img src="<?php echo base_url(); ?>upload_files/img/lasenorita.png" alt="">
+			            <img src="<?php echo base_url(); ?>upload_files/img/<?php echo $o->getId(); ?>.png" alt=""/>
 			            <div class="caption">
-			              <h5>La Señorita Julia</h5>
-			              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			              <p><a href="#" class="btn btn-primary">Editar</a> <a href="#" class="btn btn-danger">Eliminar</a></p>
+			              <h5><?php echo $o->getNombre(); ?></h5>
+			              <p><?php echo $o->getReseña(); ?></p>
+			              <p>
+                                         
+                                         <?php echo form_open('panel/mod_obra_teatral'); ?>                                       
+                                         <input type="hidden" name="idObra" value="<?php echo $o->getId();?>"/>
+                                         <input class="btn btn-primary" type="submit" value="Editar"/>
+                                         <?php echo form_close(); ?>
+                                         
+                                         <?php echo form_open('panel/del_obra_teatral'); ?> 
+                                         <input type="hidden" name="idObra" value="<?php echo $o->getId();?>"/>
+                                         <input class="btn btn-danger" type="submit" value="Eliminar"/>
+                                         <?php echo form_close(); ?>
+                                      </p>
 			            </div>
 			          </div>
-			        </li>
-			        <li class="span3">
-			          <div class="thumbnail">
-			            <img src="<?php echo base_url(); ?>upload_files/img/donadesastre.png" alt="">
-			            <div class="caption">
-			              <h5>Doña Desastre</h5>
-			              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			              <p><a href="#" class="btn btn-primary">Editar</a> <a href="#" class="btn btn-danger">Eliminar</a></p>
-			            </div>
-			          </div>
-			        </li>
-			        <li class="span3">
-			          <div class="thumbnail">
-			            <img src="<?php echo base_url(); ?>upload_files/img/dracula.png" alt="">
-			            <div class="caption">
-			              <h5>Drácula</h5>
-			              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-			              <p><a href="#" class="btn btn-primary">Editar</a> <a href="#" class="btn btn-danger">Eliminar</a></p>
-			            </div>
-			          </div>
-			        </li>			        
+                                   </li>
+                                   <?php }?>		        
 			      </ul>
 	      	</div>	
 	      </div>
