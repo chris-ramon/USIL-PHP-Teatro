@@ -47,11 +47,6 @@ class Obra extends CI_Model {
         return $this->_reseña;
     }
     
-    public function getAfiche() {
-        return $this->_afiche;
-    }
-
-    
     public function getPuntos() {
         return $this->_puntos;
     }
@@ -133,12 +128,12 @@ class Obra extends CI_Model {
             'temporada'=>$obra->getTemporada(),
             'precio'=>$obra->getPrecio(),         
         );
-         $this->db->where('id',$obra->getId());
+         $this->db->where('obraId',$obra->getId());
         $this->db->update('obras',$data);
     }
     
     public function eliminarObra($id){
-        $this->db->where('obraiId',$id);
+        $this->db->where('obraId',$id);
         $this->db->delete("obras");
     }
     
