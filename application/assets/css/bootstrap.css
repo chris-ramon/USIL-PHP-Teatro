@@ -2716,6 +2716,7 @@ button.close {
 
 .btn-primary {
   background-color: #0074cc;
+  
   *background-color: #0055cc;
   background-image: -ms-linear-gradient(top, #0088cc, #0055cc);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#0055cc));
@@ -2729,6 +2730,8 @@ button.close {
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#0088cc', endColorstr='#0055cc', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
 }
+
+
 
 .btn-primary:hover,
 .btn-primary:active,
@@ -2776,6 +2779,7 @@ button.close {
 
 .btn-danger {
   background-color: #da4f49;
+  position: relative;
   *background-color: #bd362f;
   background-image: -ms-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ee5f5b), to(#bd362f));
@@ -2788,6 +2792,8 @@ button.close {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ee5f5b', endColorstr='#bd362f', GradientType=0);
   filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+ 
+      
 }
 
 .btn-danger:hover,
@@ -4958,3 +4964,5 @@ a.badge:hover {
 .invisible {
   visibility: hidden;
 }
+
+    
