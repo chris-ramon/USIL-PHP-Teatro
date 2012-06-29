@@ -96,27 +96,28 @@
 			<div class="span12 separator"></div>
 		</div>
 		<section id="obras">
-			<div class="row">
 				<ul class="thumbnails">
+					<?php if (isset($obras)): ?>
+						<?php foreach($obras as $obra): ?>
 	        <li class="obra span4">
 	          <div class="thumbnail well">
 
-	            <img src="<?php echo base_url(); ?>upload_files/img/lasenorita.png">
+	            <img src="<?php echo base_url(); ?>upload_files/img/<?php echo $obra->getAfiche(); ?>">
 
 	            <div class="caption">
 
 								<!-- BEGIN ratings -->
 								<div class="row ratings">
-									<div class="span1">250 Puntos</div>
-									<div class="span1">50 Likes</div>
+									<div class="span1"><?php echo $obra->getPuntos(); ?> puntos</div>
+									<div class="span1"><?php echo $obra->getLikes(); ?> likes</div>
 									<div class="span1">50 Comentarios</div>
 								</div> 
 								<!-- END ratings -->
 
 								<!-- BEGIN lugar y fecha de estreno -->
 								<div id="info" class="row">
-									<div class="span1">La Plaza Isil</div>
-									<div class="span2">Estreno: 26 de Abril 2012</div>
+									<div class="span1"><?php echo $obra->getLugar(); ?></div>
+									<div class="span2">Estreno: <?php echo $obra->getEstreno(); ?></div>
 								</div> 
 								<!-- END lugar y fecha de estreno -->
 								
@@ -124,117 +125,32 @@
 
 								<!-- BEGIN contenido de la obra -->
 								<div class="contenido-obra">
-									<p class="pull-right"><a href="#" class="btn btn-success">Participar</a></p>
-		              <h3>La Señorita Julia</h3>
-		              <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-		              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		              consequat. Duis aute irure dolor in.</p>
-									<p>Reprehenderit in voluptate velit esse
-		              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Leer Más ... </a></p>
+									<p class="pull-right"><?php echo anchor('/obra/detalle-obra-teatral/'.$obra->getId(), 'Participar', array('class' => 'btn btn-success')); ?></p>
+		              <h3><?php echo $obra->getNombre(); ?></h3>
+		              <p><?php echo $obra->getResena(); ?></p>
+									<p><?php echo anchor('/obra/detalle-obra-teatral/'.$obra->getId(), 'Leer Más ...'); ?></p>
 								</div>	              
 								<!-- END contenido de la obra -->
 
 	            </div>
 
 	          </div>
-	        </li>
-	        <li class="obra span4">
-	          <div class="thumbnail well">
-
-	            <img src="<?php echo base_url(); ?>upload_files/img/dracula.png">
-
-	            <div class="caption">
-
-								<!-- BEGIN ratings -->
-								<div class="row ratings">
-									<div class="span1">250 Puntos</div>
-									<div class="span1">50 Likes</div>
-									<div class="span1">50 Comentarios</div>
-								</div> 
-								<!-- END ratings -->
-
-								<!-- BEGIN lugar y fecha de estreno -->
-								<div id="info" class="row">
-									<div class="span1">La Plaza Isil</div>
-									<div class="span2">Estreno: 23 de Abril 2012</div>
-								</div> 
-								<!-- END lugar y fecha de estreno -->
-								
-								<div class="span1 separator separator-obra-inner"></div>
-
-								<!-- BEGIN contenido de la obra -->
-								<div class="contenido-obra">
-									<p class="pull-right"><a href="#" class="btn btn-success">Participar</a></p>
-		              <h3>Drácula</h3>
-									<p>Reprehenderit in voluptate velit esse
-		              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Leer Más ... </a></p>
-								</div>	              
-								<!-- END contenido de la obra -->
-
-	            </div>
-
-	          </div>
-	        </li>
-
-	        <li class="obra span4">
-	          <div class="thumbnail well">
-
-	            <img src="<?php echo base_url(); ?>upload_files/img/donadesastre.png">
-
-	            <div class="caption">
-
-								<!-- BEGIN ratings -->
-								<div class="row ratings">
-									<div class="span1">250 Puntos</div>
-									<div class="span1">50 Likes</div>
-									<div class="span1">50 Comentarios</div>
-								</div> 
-								<!-- END ratings -->
-
-								<!-- BEGIN lugar y fecha de estreno -->
-								<div id="info" class="row">
-									<div class="span1">La Plaza Isil</div>
-									<div class="span2">Estreno: 23 de Abril 2012</div>
-								</div> 
-								<!-- END lugar y fecha de estreno -->
-								
-								<div class="span1 separator separator-obra-inner"></div>
-
-								<!-- BEGIN contenido de la obra -->
-								<div class="contenido-obra">
-									<p class="pull-right"><a href="#" class="btn btn-success">Participar</a></p>
-		              <h3>Doña Desastre</h3>
-		              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		              tempor incididunt ut labore et dolore.</p>
-									<p>Reprehenderit in voluptate velit esse
-		              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		              proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <a href="#">Leer Más ... </a></p>
-								</div>	              
-								<!-- END contenido de la obra -->
-
-	            </div>
-
-	          </div>
-	        </li>	        
+	        </li> <!-- END OBRA WRAPPER -->
+	        	<?php endforeach ?>
+	        <?php endif ?>
       	</ul>
-			</div>
 		</section>
 	</div>
-	<script src="<?php echo base_url(); ?>application/assets/js/jquery.min.js"></script>
-	<script src="<?php echo base_url(); ?>application/assets/js/bootstrap.min.js"></script>
-	<script src="<?php echo base_url(); ?>application/assets/js/app.js"></script>
-
+	<script src="<?php echo base_url(); ?>application/assets/js/app.min.js"></script>
 	<script>
-	var config = {
-		login_wrapper : $("#login-wrapper"),
-		login_button : $("#login-btn"),
-		close_login_wrapper_btn : $("#close-login-wrapper")
-	};
-	Obras.initialize(config);
+	jQuery(function($) {
+		var config = {
+			login_wrapper : $("#login-wrapper"),
+			login_button : $("#login-btn"),
+			close_login_wrapper_btn : $("#close-login-wrapper")
+		};
+		Obras.initialize(config);
+	});
 	</script>
 </body>
 </html>

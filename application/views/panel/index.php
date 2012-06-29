@@ -39,7 +39,7 @@
 				<h1>Obras Teatrales</h1>
 				<ul class="nav nav-pills pull-right">
 	        <li class="active"><a href="#">DashBoard</a></li>
-	        <li><a href="#">Logout</a></li>
+	        <li><?php echo anchor('/admin/logout', 'Logout'); ?></li>
 	      </ul>
 	      <div id="dashboard-content" class="row-fluid">
 	      	<div class="span12">
@@ -52,21 +52,28 @@
 			         <?php foreach($obras as $o){ ?>
                                    <li class="span3">
 			          <div class="thumbnail">
-			            <img src="<?php echo base_url(); ?>upload_files/img/<?php echo $o->getId(); ?>.png" alt=""/>
+			            <img src="<?php echo base_url(); ?>upload_files/img/<?php echo $o->getAfiche(); ?>" alt=""/>
 			            <div class="caption">
 			              <h5><?php echo $o->getNombre(); ?></h5>
-			              <p><?php echo $o->getReseña(); ?></p>
+			              <p><?php echo substr($o->getResena(), 0, 230); ?> ...</p>
 			              <p>
-                                         
+                                         <?php $attributes = array('class' => 'pull-right'); ?>
+                                         <?php echo form_open('panel/del_obra_teatral', $attributes); ?> 
+                                         <input type="hidden" name="idObra" value="<?php echo $o->getId();?>"/>
+                                         <button class="btn btn-danger" type="submit">
+                                         	<i class="icon-trash icon-white"></i>
+                                         	Eliminar
+                                         </button>
+                                         <?php echo form_close(); ?>
+
                                          <?php echo form_open('panel/mod_obra_teatral'); ?>                                       
                                          <input type="hidden" name="idObra" value="<?php echo $o->getId();?>"/>
-                                         <input class="btn btn-primary" type="submit" value="Editar"/>
+                                         <button class="btn btn-primary" type="submit">
+                                         	<i class="icon-edit icon-white"></i>
+                                         	Editar
+                                         </button>
                                          <?php echo form_close(); ?>
                                          
-                                         <?php echo form_open('panel/del_obra_teatral'); ?> 
-                                         <input type="hidden" name="idObra" value="<?php echo $o->getId();?>"/>
-                                         <input class="btn btn-danger" type="submit" value="Eliminar"/>
-                                         <?php echo form_close(); ?>
                                       </p>
 			            </div>
 			          </div>

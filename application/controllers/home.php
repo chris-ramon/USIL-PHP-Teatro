@@ -15,7 +15,12 @@ class Home extends CI_Controller {
     }
  
     function index(){
-        echo $this->session->userdata('user_data');
+        // Obtenemos las últimas obras creadas.
+        $this->load->model('obra_model');
+        $data['obras'] = $this->obra_model->listarObras();
+        // FIN (Obtenemos las últimas obras creadas.) //
+
+        // echo $this->session->userdata('user_data');
         //Facebook Login
             $user = $this->facebook->getUser();
 
@@ -35,7 +40,7 @@ class Home extends CI_Controller {
             } else {
                 $fb_data['loginUrl'] = $this->facebook->getLoginUrl(array(
                                     'scope' => 'email,user_birthday,publish_stream,offline_access', // app permissions
-                                    'redirect_uri' => 'http://192.168.1.98/USIL-PHP-Teatro/' // URL where you want to redirect your users after a successful login
+                                    'redirect_uri' => 'http://190.43.11.236/USIL-PHP-Teatro/' // URL where you want to redirect your users after a successful login
                                 ));
             }
             if ($fb_data['user']['name']!=null){//verificar si está logeado en facebook
@@ -47,6 +52,7 @@ class Home extends CI_Controller {
             }
             $data['fb_data']=$fb_data;
             $data['tw_data']=$this->session->userdata('tw_data');
+
         if($this->session->userdata('user_data')=='facebook'){
                 if($this->Usuario->getUserByUser_Id($fb_data['user']['id'])->getPassword()==null){
                     $data['username']="";
@@ -54,14 +60,13 @@ class Home extends CI_Controller {
                     $data['msg']="";
                     $this->load->view('checkpwd',$data);
                 }else{
-                    $this->load->view('index',$data);
+                    $this->load->view('index.php',$data);
                 }
         }else{
-            $this->load->view('index',$data);
+            $this->load->view('index.php',$data);
         }
     }
 
-    
     function login() {
         $useremail = $this->input->post('email');
         $pass = $this->input->post('password');
@@ -70,7 +75,7 @@ class Home extends CI_Controller {
             if($result->getLogged()=='Fb'){
                 $fb_data['fb_id']=$result->getUser_id();
                 $fb_data['name']=$result->getNombre();
-                $fb_data['logoutUrl'] = "http://localhost/USIL-PHP-Teatro/index.php/home/logoutFb";
+                $fb_data['logoutUrl'] = "http://190.43.11.236/USIL-PHP-Teatro/index.php/home/logoutFb";
 
                 $this->session->set_userdata('fb_data', $fb_data);
                 $this->session->set_userdata('user_data','facebook');
@@ -173,6 +178,6 @@ class Home extends CI_Controller {
     
     function detalle_obra_teatral($id)
     {
-            $this->load->view('detalle_obra_teatral.php');
+        $this->load->view('detalle_obra_teatral.php');
     }
 }

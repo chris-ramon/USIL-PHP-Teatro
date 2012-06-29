@@ -29,11 +29,11 @@ margin-bottom:15px;
 }
 #login-wrapper {
 background: url("../img/bg.png");
-position: absolute; 
-margin-top:-120px;
-width:260px;
-height:120px;
 display:none;
+height:120px;
+margin-top:-120px;
+position: absolute; 
+width:260px;
 }
 #login-wrapper a {
 background: url("../img/icon-close.png");
@@ -87,7 +87,10 @@ margin-top:20px;
 margin-bottom:25px;	
 }
 #obras {
-margin-top:30px;	
+position:relative;
+margin-top: 30px;
+margin-left: auto;
+margin-right: auto;
 }
 #obras ul {
 margin-left:0px;	
@@ -102,6 +105,9 @@ margin-top:20px;
 margin-bottom:20px;
 margin-left:0px;
 width: 100%;
+}
+.thumbnails > li {
+margin-left: 0px;	
 }
 .thumbnail {
 background: #f5f5f5;	

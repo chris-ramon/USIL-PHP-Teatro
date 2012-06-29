@@ -41,7 +41,7 @@
 $route['default_controller'] = "home";
 $route['404_override'] = '';
 $route['panel/nueva-obra-teatral'] = 'panel/nueva_obra_teatral';
-$route['detalle-obra-teatral/(\d+)'] = 'home/detalle_obra_teatral/$1';
+$route['obra/detalle-obra-teatral/(\d+)'] = 'obra/detalle_obra_teatral/$1';
 
 
 /* End of file routes.php */

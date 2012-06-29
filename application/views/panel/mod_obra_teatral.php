@@ -58,7 +58,7 @@
 	      <div id="dashboard-content" class="row-fluid">
 	      	<div class="span12">
 	      		<h2>Modificar Obra Teatral</h2>
-	      		<button id="add-obra-btn" class="btn pull-right btn-warning">Cancelar</button>
+	      		<?php echo anchor('/panel/index', 'Cancelar', array("id"=>"add-obra-btn","class"=>"btn pull-right btn-warning")); ?>
 	      		<div class="separator separator-panel"></div>
 	      		<?php $attributes = array('class' => 'well', 'id' => 'form-nueva-obra'); ?>
 	      		<?php echo form_open_multipart('panel/edit_obra_teatral', $attributes); ?>
@@ -80,11 +80,11 @@
 
 	      			<label for="resena">Reseña</label>
 	      			<textarea id="resena" name="resena" class="span6" rows="4"
-	      			value="Reseña" required placeholder="Ingrese una reseña" ><?php echo $obra->getReseña(); ?></textarea>
+	      			value="Reseña" required placeholder="Ingrese una reseña" ><?php echo $obra->getResena(); ?></textarea>
 
 	      			<label for="afiche">Afiche</label>  
 	      			<input id="afiche" type="file" name="userfile"/>
-                                <img src ="<?php echo base_url(); ?>upload_files/img/<?php echo $obra->getId();?>.png"/>
+					<img src ="<?php echo base_url(); ?>upload_files/img/<?php echo $obra->getAfiche();?>" height=100/>
 
 	      			<h3>Actores</h3>
 	      			<select>
@@ -113,14 +113,9 @@
 					<input id="sala" type="text" name="sala" class="span4"
 					value="<?php echo $obra->getLugar(); ?>" required placeholder="Ingrese una sala" />
 
-					<label for="horarios">Horarios</label>
-					<input id="horarios" type="text" name="horarios" class="span7 horario"
-					value="<?php echo date('Y-m-d g:i a',strtotime($obra->getFechaHora())); ?>" required placeholder="Ingrese un horario"/>
-                                        
-
-					<label for="temporada">Temporada</label>
+					<label for="temporada">Estreno</label>
 					<input id="temporada" type="text" name="temporada" class="span4"
-					value="<?php echo $obra->getTemporada(); ?>" required placeholder="Ingrese una temporada"/>
+					value="<?php echo $obra->getEstreno(); ?>" required placeholder="Ingrese una temporada"/>
 
 					<label for="precio">Precio</label>
 					<input id="precio" type="number" name="precio" class="span2"

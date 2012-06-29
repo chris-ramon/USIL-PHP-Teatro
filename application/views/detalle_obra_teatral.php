@@ -30,39 +30,40 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="main-rating-wrapper" class="span2">
-					<button id="main-rating" class="pull-left btn btn-success">140 puntos</button>
+					<button id="main-rating" class="pull-left btn btn-success"><?php echo $obra->getPuntos(); ?> puntos</button>
 				</div>
 				<div class="span10">
 					<div class="row-fluid">
 						<aside id="play-ratings" class="span10">
-							<span class="span2">140 Puntos</span>
-							<span class="span2">50 Likes</span>
+							<span class="span2"><?php echo $obra->getPuntos(); ?> puntos</span>
+							<span class="span2"><?php echo $obra->getLikes(); ?> Likes</span>
 							<span class="span2">20 Comentarios</span>
 						</aside>		
 					</div>
 
 					<div class="row-fluid">
 						<aside id="participate-options" class="span10">
-							<a href="#" class="span2">Me gustó</a>
-							<a href="#" class="span2">No me gustó</a>
+							<?php $attributs = array('class' => 'span2'); ?>
+							<?php echo anchor('/obra/votar/'.$obra->getId().'/1' , 'Me gustó', $attributs); ?>
+							<?php echo anchor('/obra/votar/'.$obra->getId().'/0' , 'No me gustó', $attributs); ?>
 							<a href="#disqus_thread" class="span2">Comentar</a>						
 						</aside>
 					</div>
 
 					<div class="row-fluid">
-						<p class="span5"><strong>Dirige: </strong>Marian Gubbins</p>
-						<p class="span5"><strong>Estreno: </strong>12 de Mayo 2011</p>
+						<p class="span5"><strong>Dirige: </strong><?php echo $obra->getDirector(); ?></p>
+						<p class="span5"><strong>Estreno: </strong><?php echo $obra->getEstreno(); ?></p>
 					</div>
 
 					<div class="row-fluid">
-						<p class="span5"><strong>Lugar: </strong>La Plaza Isil</p>
-						<p class="span5"><strong>Funciones: </strong>De Jueves a Martes 8 p.m y Domingos 7 p.m</p>					
+						<p class="span5"><strong>Lugar: </strong><?php echo $obra->getLugar(); ?></p>
+						<p class="span5"><strong>Funciones: </strong><?php echo $obra->getFunciones(); ?></p>					
 					</div>
 
 					<div id="poster" class="row-fluid">
 							<ul class="thumbnails">
 								<li class="span10">
-									<a href="" class="thumbnail"><img src="<?php echo base_url(); ?>upload_files/img/lasenorita.png"></a>
+									<span class="thumbnail"><img src="<?php echo base_url(); ?>upload_files/img/<?php echo $obra->getAfiche(); ?>"></span>
 								</li>
 							</ul>
 					</div>
@@ -71,19 +72,7 @@
 
 					<div class="row-fluid">
 						<div class="span10">
-							<p>La señorita Julia, hija de un conde (Fiorella De Ferrari), tiene un encuentro con uno de sus 
-								sirvientes, Juan (Bruno Odar) durante la fiesta de San Juan. A partir de ahí, se teje una historia 
-								de amor.</p>
-							<p>Entre dudas y urgencias eróticas, Julia parece carecer de la capacidad de decisión que Juan 
-								sí tiene. Los acontecimientos se precipitan y Julia, desquiciada, sale a cumplir con su destino.</p> 
-							<p>Ambos personajes son interpelados por su propia manera de enfrentar la vida, sus anhelos, la 
-								condición social que los separa, pero sobre todo por la consecuencia de sus actos y la crudeza 
-								en la vida cotidiana representada en Cristina, la criada novia de Juan (Camila Mac Lennan).</p>
-
-							<p>La señorita Julia, es una obra considerada en la etapa del naturalismo uno de los momentos mas 
-								difíciles en la historia del teatro porque se da en un contexto de grandes cambios políticos y 
-								económicos en el mundo que marcan el temperamento de los personajes y el resquebrajamiento las 
-								relaciones sociales. </p>
+							<p><?php echo $obra->getResena(); ?></p>
 						</div>
 					</div>
 

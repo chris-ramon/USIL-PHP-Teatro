@@ -543,7 +543,7 @@ abstract class BaseFacebook
       'www',
       'logout.php',
       array_merge(array(
-        'next' => "http://192.168.1.98/USIL-PHP-Teatro/index.php/home/logoutFb",
+        'next' => "http://190.43.11.236/USIL-PHP-Teatro/index.php/home/logoutFb",
         'access_token' => $this->getAccessToken(),
       ), $params)
     );

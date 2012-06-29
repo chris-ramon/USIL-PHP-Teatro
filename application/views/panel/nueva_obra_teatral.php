@@ -8,23 +8,10 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/bootstrap-responsive.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/app.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/panel.css"/>
-    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/jquery-ui-1.7.3.custom.css"/>
     <link href='http://fonts.googleapis.com/css?family=Lovers+Quarrel' rel='stylesheet' type='text/css'/>
     
     <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-ui-1.8.16.custom.min.js.js"></script>
-    <script type="text/javascript" src="<?php echo base_url(); ?>application/assets/js/jquery-ui-timepicker-addon.js"></script>
-    <script type="text/javascript">
-    $(function(){
-    $('#horarios').datetimepicker({
-        dateFormat: 'yy-mm-dd',
-	ampm: true
-    });
-    });
-    </script>
 
-        
-       
  </head>
 
 
@@ -56,7 +43,7 @@
 	      <div id="dashboard-content" class="row-fluid">
 	      	<div class="span12">
 	      		<h2>Nueva Obra Teatral</h2>
-	      		<button id="add-obra-btn" class="btn pull-right btn-warning">Cancelar</button>
+	      		<?php echo anchor('/panel/index', 'Cancelar', array("id"=>"add-obra-btn","class"=>"btn pull-right btn-warning")); ?>
 	      		<div class="separator separator-panel"></div>
 	      		<?php $attributes = array('class' => 'well', 'id' => 'form-nueva-obra'); ?>
 	      		<?php echo form_open_multipart('panel/nueva_obra_teatral', $attributes); ?>
@@ -64,6 +51,10 @@
 	      			<label for="nombre">Nombre</label>
 	      			<input id="nombre" name="nombre" type="text" class="span8" autofocus="autofocus"
 	      			value="<?php echo set_value('nombre'); ?>" required placeholder="Ingrese un nombre"/>
+
+					<label for="estreno">Estreno</label>
+					<input id="estreno" type="text" name="estreno" class="span4"
+					value="<?php echo set_value('estreno'); ?>" required placeholder="Eg. Jueves 26 de abril de 2012"/>
 
 	      			<label for="autor">Autor</label>
 	      			<input id="autor" name="autor" type="text"class="span6"
@@ -78,7 +69,7 @@
 	      			value="<?php echo set_value('resena'); ?>" required placeholder="Ingrese una reseña" ></textarea>
 
 	      			<label for="afiche">Afiche</label>  
-	      			<input id="afiche" type="file" name="userfile"/>
+	      			<input id="afiche" type="file" required name="userfile"/>
 
 	      			<h3>Actores</h3>
 	      			<select>
@@ -103,22 +94,25 @@
 
 					<h3>Datos del Teatro</h3>
 
-					<label for="sala">Sala</label>
-					<input id="sala" type="text" name="sala" class="span4"
-					value="<?php echo set_value('sala'); ?>"required placeholder="Ingrese una sala" />
-
-					<label for="horarios">Horarios</label>
-					<input id="horarios" type="text" name="horarios" class="span7 horario"
-					value="<?php echo set_value('horarios'); ?>" required placeholder="Ingrese un horario"/>
-                                        
+					<label for="lugar">Lugar</label>
+					<input id="lugar" type="text" name="lugar" class="span4"
+					value="<?php echo set_value('lugar'); ?>"required placeholder="Eg. La Plaza Izil" />
 
 					<label for="temporada">Temporada</label>
-					<input id="temporada" type="text" name="temporada" class="span4"
-					value="<?php echo set_value('temporada'); ?>" required placeholder="Ingrese una temporada"/>
+					<input id="temporada" type="text" name="temporada" class="span5 horario"
+					value="<?php echo set_value('temporada'); ?>" required placeholder="Eg. Del jueves 26 de abril al martes 03 de julio."/>
+
+					<label for="funciones">Funciones</label>
+					<input id="funciones" type="text" name="funciones" class="span5 horario"
+					value="<?php echo set_value('funciones'); ?>" required placeholder="Eg. De jueves a lunes 8 p.m. y domingos 7 p.m."/>
+                                        
+ 					<label for="informacionadicional">Información Adicional</label>
+					<textarea id="informacionadicional" type="text" name="informacionadicional" class="span6" rows="4"
+					value="<?php echo set_value('informacionadicional'); ?>" placeholder="Entradas a la venta en Teleticket y en la boletería del teatro."></textarea>
 
 					<label for="precio">Precio</label>
 					<input id="precio" type="number" name="precio" class="span2"
-					value="<?php echo set_value('precio'); ?>" required placeholder="Ingrese un precio"/>
+					value="<?php echo set_value('precio'); ?>" placeholder="Precio ..."/>
 
 					<input id="submit-obra" type="submit" value="Crear Obra" class="btn btn-primary"/>
 	      		<?php echo form_close(); ?>

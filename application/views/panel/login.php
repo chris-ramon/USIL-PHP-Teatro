@@ -28,15 +28,15 @@
 		</header>
 		<div class="row">
 			<div class="span4 offset4">
-			<form id="login-form" class="well">
+			<?php echo form_open('admin/login', array('id' => "login-form", 'class' => 'well', "method" => 'post')); ?> 
 				<label>Username</label>
 				<input type="text" name="username">
 				<label>Password</label>
-				<input type="password" name="username">
+				<input type="password" name="pwd">
 				<label></label>
 				<input type="submit" value="Ingresar" class="btn">
 				<input type="reset" class="btn">
-			</form>				
+			<?php echo form_close(); ?>
 			</div>
 		</div>
 	</div>
