@@ -18,7 +18,8 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Base de datos: `teatro`
 --
-
+CREATE DATABASE 'teatro' DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE 'teatro';
 -- --------------------------------------------------------
 
 --
