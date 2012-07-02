@@ -10,9 +10,9 @@
 </ul>
 
 <ul><strong>URL'S: </strong>
-<li><strong>Home: <a href="http://obras.chris.pe">http://obras.chris.pe</a></strong></li>
+<li><strong>Home: <a href="http://obras.chris.pe" target="_blank">http://obras.chris.pe</a></strong></li>
 <li>
-<ul><strong>Administrador: <a href="http://obras.chris.pe/panel">http://obras.chris.pe/panel</a></strong>
+<ul><strong>Administrador: <a href="http://obras.chris.pe/panel" target="_blank">http://obras.chris.pe/panel</a></strong>
 <li>User: admin</li>
 <li>Password: admin</li>
 </ul>
